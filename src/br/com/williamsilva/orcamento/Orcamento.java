@@ -1,6 +1,7 @@
 package br.com.williamsilva.orcamento;
 
 import br.com.williamsilva.orcamento.situacao.EmAnalise;
+import br.com.williamsilva.orcamento.situacao.Finalizado;
 import br.com.williamsilva.orcamento.situacao.SituacaoOrcamento;
 
 import java.math.BigDecimal;
@@ -48,5 +49,9 @@ public class Orcamento {
 
     public void finalizar() {
         this.situacao.finalizar(this);
+    }
+
+    public boolean isFinalizado() {
+        return this.situacao instanceof Finalizado;
     }
 }
