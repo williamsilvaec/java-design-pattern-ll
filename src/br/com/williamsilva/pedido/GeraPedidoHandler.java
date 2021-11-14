@@ -1,5 +1,6 @@
 package br.com.williamsilva.pedido;
 
+import br.com.williamsilva.orcamento.ItemOrcamento;
 import br.com.williamsilva.orcamento.Orcamento;
 import br.com.williamsilva.pedido.acao.AcaoAposGerarPedido;
 
@@ -15,7 +16,9 @@ public class GeraPedidoHandler {
     }
 
     public void executa(GeraPedido dados) {
-        Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQuantidadeItens());
+        // Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQuantidadeItens());
+        Orcamento orcamento = new Orcamento();
+        orcamento.adicionarItem(new ItemOrcamento(dados.getValorOrcamento()));
         Pedido pedido = new Pedido(dados.getCliente(), LocalDateTime.now(), orcamento);
 
         acoes.forEach(acao -> acao.executaAcao(pedido));
